@@ -11,7 +11,12 @@ namespace HelloWorld
             //Example_2.ViDu2();
             //Example_2.ViDu3();
             //Example_2.ViDu4();
-            Example_2.ViDu5();
+            //Example_2.ViDu5();
+            //Example_3.CheckedExample();
+            //Example_3.TryCatchWithChecked();
+            //Example_3.CheckedExample();
+            //Example_3.DebugExample();
+            Example_3.AdvanceDebugExample();
         }
     }
 }
