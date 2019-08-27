@@ -135,6 +135,112 @@ namespace HelloWorld
             Console.ReadKey();
         }
 
+        public static void BaiTap2()
+        {
+            Dictionary<string, float> danhSachDiem = new Dictionary<string, float>();
+            float tongDiemCacBanVanT = 0;
+            
+
+            danhSachDiem.Add("Ha", 25.5f);
+            danhSachDiem.Add("Hung", 21.25f);
+            danhSachDiem.Add("Lan", 26.75f);
+            danhSachDiem.Add("Tuan", 22.75f); //
+            danhSachDiem.Add("Tu", 19.5f); //
+            danhSachDiem.Add("Dat", 23.0f);
+            danhSachDiem.Add("Tung", 24.5f); // 
+            danhSachDiem.Add("Phuong", 28.75f);
+            danhSachDiem.Add("Cuong", 25.5f);
+            danhSachDiem.Add("Thanh", 20.75f); //
+
+            // tinh tong diem cac ban co van ten T
+            foreach (KeyValuePair<string, float> keyValuePair in danhSachDiem)
+            {
+                //if (keyValuePair.Key.IndexOf("T") == 0)
+                //{
+                //    Console.WriteLine(keyValuePair.Key + ": " + keyValuePair.Value);
+                //    tongDiemCacBanVanT += keyValuePair.Value;
+                //    // tongDiemCacBanVanT =tongDiemCacBanVanT + keyValuePair.Value;
+                //}
+            }
+
+            foreach(string key in danhSachDiem.Keys)
+            {
+                //if(key.IndexOf("T") == 0)
+                //{
+                //    Console.WriteLine(key + ": " + danhSachDiem[key]);
+                //    tongDiemCacBanVanT += danhSachDiem[key];
+                //}
+            }
+
+            //Console.WriteLine("Tong diem cac ban van T: " + tongDiemCacBanVanT);
+            //=====================================================
+
+            //string[] sapXepTen = new string[10];
+            //int indexDangDuyet = 0;
+            //string temp = "";
+            //foreach (string key in danhSachDiem.Keys)
+            //{
+            //    sapXepTen[indexDangDuyet] = key;
+            //    indexDangDuyet++;
+            //}
+            //===================================
+            //for (int i = 0; i < sapXepTen.Length - 1; i++)
+            //{
+            //    for (int j = i + 1; j < sapXepTen.Length; j++)
+            //    {
+            //        if (string.Compare(sapXepTen[i], sapXepTen[j]) > 0)
+            //        {
+            //            doi vi tri 2 ten cho nhau
+            //           temp = sapXepTen[i];
+            //            sapXepTen[i] = sapXepTen[j];
+            //            sapXepTen[j] = temp;
+            //        }
+            //    }
+            //}
+
+            //for (int i = 0; i < sapXepTen.Length; i++)
+            //{
+            //    Console.WriteLine(sapXepTen[i] + ": " + danhSachDiem[sapXepTen[i]]);
+            //}
+
+            // ---------------------------------------------------
+            List<string> sapXepTen = new List<string>();
+            //sapXepTen.Add("abcv");
+            //sapXepTen.Add("def");
+
+            //List<string> nameList = new List<string>() { "abcv", "def" };
+            //nameList.Add("afdfdf");
+
+            
+            string temp = "";
+            foreach (string key in danhSachDiem.Keys)
+            {
+                sapXepTen.Add(key);
+            }
+            //===================================
+            for (int i = 0; i < sapXepTen.Count - 1; i++)
+            {
+                for (int j = i + 1; j < sapXepTen.Count; j++)
+                {
+                    if (danhSachDiem[sapXepTen[i]] > danhSachDiem[sapXepTen[j]])
+                    {
+                        // doi vi tri 2 ten cho nhau
+                        temp = sapXepTen[i];
+                        sapXepTen[i] = sapXepTen[j];
+                        sapXepTen[j] = temp;
+                    }
+                }
+            }
+
+            for (int i = 0; i < sapXepTen.Count; i++)
+            {
+                Console.WriteLine(sapXepTen[i] + ": " + danhSachDiem[sapXepTen[i]]);
+            }
+
+            
+            Console.ReadKey();
+        }
+
         #region Number calculator
         static int Sum(int a, int b)
         {
