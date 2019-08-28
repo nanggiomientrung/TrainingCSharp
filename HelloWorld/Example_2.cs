@@ -137,7 +137,7 @@ namespace HelloWorld
 
         public static void BaiTap2()
         {
-            Dictionary<string, float> danhSachDiem = new Dictionary<string, float>();
+            Dictionary<String, float> danhSachDiem = new Dictionary<String, float>();
             float tongDiemCacBanVanT = 0;
             
 
@@ -183,14 +183,14 @@ namespace HelloWorld
             //    sapXepTen[indexDangDuyet] = key;
             //    indexDangDuyet++;
             //}
-            //===================================
+            ////===================================
             //for (int i = 0; i < sapXepTen.Length - 1; i++)
             //{
             //    for (int j = i + 1; j < sapXepTen.Length; j++)
             //    {
             //        if (string.Compare(sapXepTen[i], sapXepTen[j]) > 0)
             //        {
-            //            doi vi tri 2 ten cho nhau
+            //            //doi vi tri 2 ten cho nhau
             //           temp = sapXepTen[i];
             //            sapXepTen[i] = sapXepTen[j];
             //            sapXepTen[j] = temp;
@@ -211,7 +211,7 @@ namespace HelloWorld
             //List<string> nameList = new List<string>() { "abcv", "def" };
             //nameList.Add("afdfdf");
 
-            
+
             string temp = "";
             foreach (string key in danhSachDiem.Keys)
             {
@@ -237,7 +237,7 @@ namespace HelloWorld
                 Console.WriteLine(sapXepTen[i] + ": " + danhSachDiem[sapXepTen[i]]);
             }
 
-            
+
             Console.ReadKey();
         }
 
@@ -277,5 +277,58 @@ namespace HelloWorld
             return a &= b;
         }
         #endregion
+
+
+        public static void Test()
+        {
+            Dictionary<String, float> danhsachdiem = new Dictionary<String, float>();
+
+            danhsachdiem.Add("Hà", 25.5f);
+            danhsachdiem.Add("Hùng", 21.25f);
+            danhsachdiem.Add("Lan", 26.75f);
+            danhsachdiem.Add("Tuấn", 22.75f);
+            danhsachdiem.Add("Tú", 19.5f);
+            danhsachdiem.Add("Đạt", 23.0f);
+            danhsachdiem.Add("Tùng", 24.5f);
+            danhsachdiem.Add("Phương", 28.75f);
+            danhsachdiem.Add("Cường", 25.5f);
+            danhsachdiem.Add("Thành", 20.75f);
+
+
+
+            Console.WriteLine("Sap xep diem theo ten");
+
+            string[] sapxepten = new string[10];
+            int indexdangduyet = 0;
+            string temp;
+            foreach (string key in danhsachdiem.Keys)
+            {
+                if (danhsachdiem.Keys != null)
+                {
+                    sapxepten[indexdangduyet] = key;
+                    Console.WriteLine(sapxepten[indexdangduyet]);
+                    indexdangduyet = +1;
+                }
+            }
+            for (int i = 0; i < sapxepten.Length - 1; i++)
+            {
+                for (int j = i + 1; j < sapxepten.Length; j++)
+                {
+                    if (string.Compare(sapxepten[i], sapxepten[j]) > 0)
+                    {
+                        temp = sapxepten[i];
+                        sapxepten[i] = sapxepten[j];
+                        sapxepten[j] = temp;
+                    }
+
+                }
+            }
+
+            for (int i = 0; i < sapxepten.Length; i++)
+            {
+                Console.WriteLine(sapxepten[i] + " " + danhsachdiem[sapxepten[i]]);
+            }
+
+        }
     }
 }
