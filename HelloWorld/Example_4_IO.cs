@@ -29,7 +29,7 @@ namespace HelloWorld
         {
             Console.OutputEncoding = Encoding.Unicode;
 
-            string filePath = @"D:\File1";
+            string filePath = @"D:\File12";
 
             string[] lines;
             string str;
@@ -58,12 +58,19 @@ namespace HelloWorld
 
         public static void File_Move()
         {
-            string oldFilePath = @"D:\File1";
+            string oldFilePath = @"D:\FileE";
             string newFilePath = @"D:\File3"; // với trường hợp này thì chỉ đơn giản là đổi tên
 
-            System.IO.FileInfo fileInfo = new System.IO.FileInfo(oldFilePath);
-
-            fileInfo.MoveTo(newFilePath);
+            try
+            {
+                System.IO.FileInfo fileInfo = new System.IO.FileInfo(oldFilePath);
+                fileInfo.MoveTo(newFilePath);
+            }
+            catch
+            {
+                Console.WriteLine("File does not exist");
+                Console.ReadKey();
+            }           
         }
 
         // ============================================================================
@@ -101,10 +108,10 @@ namespace HelloWorld
             string filePath = @"D:\binary.dat";
             using (BinaryWriter writer = new BinaryWriter(File.Open(filePath, FileMode.Create)))
             {
-                writer.Write(1.250F);
-                writer.Write(@"c:\Temp");
-                writer.Write(10);
-                writer.Write(true);
+                writer.Write(1.250F); // float
+                writer.Write(@"c:\Temp"); // string
+                writer.Write(10); // int
+                writer.Write(true); // bool
             }
         }
 

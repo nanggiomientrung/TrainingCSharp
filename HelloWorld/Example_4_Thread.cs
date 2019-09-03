@@ -17,6 +17,7 @@ namespace HelloWorld
             Console.WriteLine("-----------------------------------");
             Thread th = Thread.CurrentThread; // lay thread dang chay
             th.Name = "MainThread";
+            th.Abort();
             //th.CurrentCulture = System.Globalization.CultureInfo.GetCultures(System.Globalization.CultureTypes.AllCultures)[0];
             Console.WriteLine("Day la {0}", th.Name);
 
@@ -29,14 +30,14 @@ namespace HelloWorld
             Console.WriteLine("Da luong trong C#");
             Console.WriteLine("Vi du minh hoa cach tao Thread");
             Console.WriteLine("----------------------------------");
-            ThreadStart childref = new ThreadStart(CallAChildThread);
+            ThreadStart childref = new ThreadStart(CallAChildThread); // CallChildThread();
             Console.WriteLine("Trong Main Thread: tao thread con.");
             Thread childThread = new Thread(childref);
             childThread.Start();
             Console.WriteLine("Da start thread con.");
 
 
-            Console.ReadKey();
+            //Console.ReadKey();
 
             if (childThread.IsAlive) Console.WriteLine("Thread van dang chay");
             else Console.WriteLine("Thread da ket thuc");
@@ -45,7 +46,7 @@ namespace HelloWorld
         }
 
         public static void CallAChildThread()
-        {
+        {             
             Console.WriteLine("Bat dau thread con");
 
             int sleepTime = 5000;
@@ -156,7 +157,7 @@ namespace HelloWorld
             // Chạy workThread,
             // và truyền vào tham số cho phương thức MyWork.DoWork.
             workThread.Start("A");
-
+            workThread.Join();
 
             for (int i = 0; i < 20; i++)
             {
@@ -185,10 +186,18 @@ namespace HelloWorld
         {
             Console.WriteLine("Create new thread");
 
-            Thread countThread = new Thread(CountToTen);
-
+            // frame work < 2.0
+            ThreadStart countThreadDelegate = new ThreadStart(CountToTen);
+            Thread countThread = new Thread(countThreadDelegate);
             // Bắt đầu Thread (start thread).
             countThread.Start();
+
+            // framework >= 2.0
+            Thread countThread2 = new Thread(CountToTen);
+            // Bắt đầu Thread (start thread).
+            countThread2.Start();
+
+
 
             // Nói với thread cha (ở đây sẽ là Main thread)
             // hãy chờ cho countThread hoàn thành rồi mới tiếp tục chạy.
@@ -196,7 +205,7 @@ namespace HelloWorld
 
             // Dòng code này phải chờ cho countThread hoàn thành, rồi mới được chạy.
             Console.WriteLine("Main thread ends");
-            Console.Read();
+            Console.ReadKey();
         }
 
         public static void CountToTen()
@@ -231,6 +240,32 @@ namespace HelloWorld
                     Thread.Sleep(500);
                     Console.WriteLine(i + " " + Thread.CurrentThread.Name);
                 }
+            }
+        }
+
+
+        // =====================================================
+        static List<int> intList = new List<int>() { 1, 2, 3, 5, 7, 9, 11, 15 };
+        public static void ThreadWithList()
+        {
+            Console.WriteLine("Bat dau main thread");
+            Thread deleteMemberThread = new Thread(DeleteWhenLagerThanSix);
+            deleteMemberThread.Start();
+            deleteMemberThread.Join();
+            for (int i = 0; i < intList.Count; i++)
+            {
+                Console.WriteLine(intList[i]);
+                Thread.Sleep(50);
+            }
+            Console.ReadKey();
+        }
+
+        public static void DeleteWhenLagerThanSix()
+        {
+            for (int i = intList.Count - 1; i >= 0; i--)
+            {
+                if (intList[i] > 6)
+                    intList.RemoveAt(i);
             }
         }
     }
