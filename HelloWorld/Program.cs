@@ -30,8 +30,12 @@ namespace HelloWorld
             //Example_4_IO.File_Move();
             //Example_4_IO.BinaryWritterExample();
             //Example_4_IO.BinaryReaderExample();
-            Example_4_IO.FileStreamWritter();
+            //Example_4_IO.FileStreamWritter();
             //Example_4_IO.FileStreamReader();
+            //Example_5.CreateStudentWithNoParam();
+            //Example_5.ClassExample_1();
+            //Example_5.ClassExample_2();
+            //Example_5.CreateStudentExample();
         }
     }
 }
